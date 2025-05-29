@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import devToolsEnhancer from 'redux-devtools-expo-dev-plugin'
 import { omdbApi } from './api'
 import favoritesReducer from './favoritesSice'
 import featuredReducer from './featuredSlice'
@@ -12,6 +13,7 @@ export const store = configureStore({
     theme: themeReducer,
   },
   middleware: (getDefault) => getDefault().concat(omdbApi.middleware),
+  enhancers: (getDefaultEnhancers) => getDefaultEnhancers().concat(devToolsEnhancer()),
 })
 
 export type RootState = ReturnType<typeof store.getState>

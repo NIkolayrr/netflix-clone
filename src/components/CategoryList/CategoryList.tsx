@@ -1,15 +1,15 @@
+import { useTheme } from '@/src/theme/ThemeProvider'
 import { router } from 'expo-router'
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
-import MovieList from '../components/MovieList'
-import { usePaginatedMovies } from '../hooks/usePaginatedMovies'
-
-interface CategoryListProps {
-  title: string
-  query: string
-}
+import { ActivityIndicator, Text, View } from 'react-native'
+import { usePaginatedMovies } from '../../hooks/usePaginatedMovies'
+import MovieList from '../MovieList/MovieList'
+import { useStyles } from './styles'
+import { CategoryListProps } from './types'
 
 export default function CategoryList({ title, query }: CategoryListProps) {
   const { movies, isLoading, isFetching, error, loadMore } = usePaginatedMovies(query)
+  const { theme } = useTheme()
+  const styles = useStyles(theme)
 
   if (isLoading && movies.length === 0) {
     return (
@@ -41,14 +41,3 @@ export default function CategoryList({ title, query }: CategoryListProps) {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  center: {
-    height: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loader: {
-    marginVertical: 8,
-  },
-})

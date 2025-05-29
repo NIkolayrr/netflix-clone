@@ -37,7 +37,11 @@ async function handleFeaturedOnQueryStarted(
     const { data } = await helpers.queryFulfilled
     const isTrendingPage1 = arg.query === 'action' && (arg.page ?? 1) === 1
     if (isTrendingPage1 && data.Search?.length) {
-      helpers.dispatch(setFeatured(data.Search[0]))
+      const firstId = data.Search[0].imdbID
+
+      const fullResult = await helpers.dispatch(omdbApi.endpoints.getMovieById.initiate(firstId)).unwrap()
+
+      helpers.dispatch(setFeatured(fullResult))
     }
   } catch {
     console.error('film not set')

@@ -7,11 +7,7 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <Stack
-          screenOptions={{
-            headerTransparent: false,
-          }}
-        />
+        <Stack />
       </ThemeProvider>
     </Provider>
   )
