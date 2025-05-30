@@ -8,7 +8,6 @@ import Button from '../Button'
 import { useStyles } from './styles'
 
 export default function FeaturedShow() {
-  const { movie } = useAppSelector((s) => s.featured)
   const { theme } = useTheme()
   const styles = useStyles(theme)
 
@@ -19,15 +18,12 @@ export default function FeaturedShow() {
   })
 
   if (!featured) return null
-  if (!movie) {
-    return null
-  }
 
   const handlePlay = () => {}
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={movie.Poster} contentFit='cover' style={styles.image}>
+      <ImageBackground source={fullMovie?.Poster} contentFit='cover' style={styles.image}>
         <View style={styles.overlay}>
           <Animated.Text entering={FadeInUp} style={styles.heading}>
             {fullMovie?.Title}
