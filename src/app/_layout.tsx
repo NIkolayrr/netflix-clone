@@ -7,7 +7,9 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <Stack />
+        <Stack>
+          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+        </Stack>
       </ThemeProvider>
     </Provider>
   )

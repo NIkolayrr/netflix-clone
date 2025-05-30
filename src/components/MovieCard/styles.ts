@@ -4,18 +4,16 @@ import type { Theme } from '../../theme'
 export const useStyles = (theme: Theme) =>
   StyleSheet.create({
     card: {
-      margin: theme.spacing.sm,
+      marginHorizontal: theme.spacing.xs,
     },
     poster: {
       width: 120,
       height: 180,
-      borderColor: theme.colors.accent,
-      borderWidth: 2,
     },
     favourites: {
       position: 'absolute',
-      top: theme.spacing.md,
-      right: theme.spacing.md,
+      top: theme.spacing.xs,
+      right: theme.spacing.xs,
     },
     imageBackground: {
       flex: 1,
@@ -23,6 +21,10 @@ export const useStyles = (theme: Theme) =>
       padding: theme.spacing.md,
     },
     title: {
-        color: theme.colors.text
-    }
+      color: theme.colors.text,
+    },
+    icon: {
+      fontSize: 32,
+      color: theme.colors.accent,
+    },
   })

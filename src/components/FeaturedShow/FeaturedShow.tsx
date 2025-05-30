@@ -1,3 +1,4 @@
+import { useGetMovieByIdQuery } from '@/src/store/api'
 import { ImageBackground } from 'expo-image'
 import { View } from 'react-native'
 import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated'
@@ -11,6 +12,13 @@ export default function FeaturedShow() {
   const { theme } = useTheme()
   const styles = useStyles(theme)
 
+  const featured = useAppSelector((state) => state.featured.movie)
+
+  const { data: fullMovie, isLoading } = useGetMovieByIdQuery(featured?.imdbID!, {
+    skip: !featured,
+  })
+
+  if (!featured) return null
   if (!movie) {
     return null
   }
@@ -22,10 +30,10 @@ export default function FeaturedShow() {
       <ImageBackground source={movie.Poster} contentFit='cover' style={styles.image}>
         <View style={styles.overlay}>
           <Animated.Text entering={FadeInUp} style={styles.heading}>
-            {movie.Title}
+            {fullMovie?.Title}
           </Animated.Text>
           <Animated.Text numberOfLines={3} entering={FadeIn} style={styles.caption}>
-            {movie.Plot}
+            {fullMovie?.Plot}
           </Animated.Text>
           <View style={styles.actionButtons}>
             <Button title='Play' icon='play' onPress={handlePlay} style={styles.playButton} />

@@ -1,4 +1,4 @@
-import { Movie } from '@/src/types/Movie'
+import { FullMovie, Movie } from '@/src/types/Movie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setFeatured } from './featuredSlice'
 
@@ -11,41 +11,47 @@ export interface SearchResponse {
   Error?: string
 }
 
+export interface NormalizedSearchResponse {
+  entities: Movie[]
+  totalResults: number
+}
+
 export const omdbApi = createApi({
   reducerPath: 'omdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://www.omdbapi.com/' }),
   endpoints: (build) => ({
-    searchMovies: build.query<SearchResponse, { query: string; page?: number }>({
+    searchMovies: build.query<NormalizedSearchResponse, { query: string; page?: number }>({
       query: ({ query, page = 1 }) => `?apikey=${OMDB_KEY}&s=${encodeURIComponent(query)}&page=${page}`,
-      transformResponse: (response: SearchResponse) => ({
-        ...response,
-        totalResults: response.totalResults,
-      }),
-      onQueryStarted: (arg, helpers) => handleFeaturedOnQueryStarted(arg, helpers),
+
+      transformResponse: (response: SearchResponse) => {
+        const filtered: Movie[] = response.Search.filter((m) => m.Poster && m.Poster !== 'N/A')
+        const entities: Movie[] = filtered.map((m) => ({
+          ...m,
+          id: m.imdbID,
+        }))
+        return {
+          entities,
+          totalResults: Number(response.totalResults),
+        }
+      },
+      onQueryStarted: async (_arg, { dispatch, getState, queryFulfilled }: any) => {
+        try {
+          const { data } = await queryFulfilled
+
+          const currentFeatured = getState().featured.movie
+          if (!currentFeatured && data.entities.length > 0) {
+            const featuredMovie = data.entities[0]
+            dispatch(setFeatured(featuredMovie))
+          }
+        } catch (e) {
+          console.error('Failed to auto-set featured movie')
+        }
+      },
     }),
-    getMovieById: build.query<Movie, string>({
+    getMovieById: build.query<FullMovie, string>({
       query: (id) => `?apikey=${OMDB_KEY}&i=${id}&plot=full`,
     }),
   }),
 })
-
-async function handleFeaturedOnQueryStarted(
-  arg: { query: string; page?: number },
-  helpers: { dispatch: any; queryFulfilled: Promise<{ data: SearchResponse }> }
-) {
-  try {
-    const { data } = await helpers.queryFulfilled
-    const isTrendingPage1 = arg.query === 'action' && (arg.page ?? 1) === 1
-    if (isTrendingPage1 && data.Search?.length) {
-      const firstId = data.Search[0].imdbID
-
-      const fullResult = await helpers.dispatch(omdbApi.endpoints.getMovieById.initiate(firstId)).unwrap()
-
-      helpers.dispatch(setFeatured(fullResult))
-    }
-  } catch {
-    console.error('film not set')
-  }
-}
 
 export const { useSearchMoviesQuery, useGetMovieByIdQuery } = omdbApi

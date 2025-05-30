@@ -28,10 +28,10 @@ export const useStyles = (theme: Theme) => {
       textAlign: 'center',
     },
     textPrimary: {
-      color: colors.background,
+      color: 'black',
     },
     textSecondary: {
-      color: colors.text,
+      color: 'white',
     },
     textText: {
       color: colors.primary,
@@ -43,7 +43,7 @@ export const useStyles = (theme: Theme) => {
       marginRight: spacing.xs,
     },
     iconPrimary: {
-      color: colors.background,
+      color: 'black',
     },
     iconSecondary: {
       color: 'white',

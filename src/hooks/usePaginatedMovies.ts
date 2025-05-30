@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useSearchMoviesQuery } from '../store/api'
-import type { Movie } from '../types/Movie'
+import { selectMoviesByIds } from '../store/selectors'
+import { useAppSelector } from './useTypedSelector'
 
 export function usePaginatedMovies(query: string, enabled = true, pageSize = 10) {
   const [page, setPage] = useState(1)
-  const [allMovies, setAllMovies] = useState<Movie[]>([])
+  const [ids, setIds] = useState<string[]>([])
 
   const { data, isLoading, isFetching, error } = useSearchMoviesQuery(
     { query, page },
@@ -15,16 +16,24 @@ export function usePaginatedMovies(query: string, enabled = true, pageSize = 10)
   )
 
   useEffect(() => {
-    if (!data?.Search) return
-    setAllMovies((prev) => (page === 1 ? data.Search : [...prev, ...data.Search]))
-  }, [data, page])
+    if (!data?.entities) return
+
+    setIds((prev) => {
+      const newIds = data.entities.map((m) => m.imdbID)
+      if (page === 1) return newIds
+      const seen = new Set(prev)
+      return [...prev, ...newIds.filter((id) => !seen.has(id))]
+    })
+  }, [data?.entities, page])
 
   useEffect(() => {
     setPage(1)
-    setAllMovies([])
+    setIds([])
   }, [query])
 
-  const totalPages = data ? Math.ceil(Number(data.totalResults) / pageSize) : 0
+  const movies = useAppSelector(selectMoviesByIds(ids))
+
+  const totalPages = data ? Math.ceil(data.totalResults / pageSize) : 0
 
   const loadMore = useCallback(() => {
     if (!isFetching && page < totalPages) {
@@ -33,7 +42,7 @@ export function usePaginatedMovies(query: string, enabled = true, pageSize = 10)
   }, [isFetching, page, totalPages])
 
   return {
-    movies: allMovies,
+    movies,
     isLoading,
     isFetching,
     error,

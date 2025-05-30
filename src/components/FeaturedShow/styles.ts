@@ -20,17 +20,22 @@ export const useStyles = (theme: Theme) => {
     overlay: {
       flex: 1,
       backgroundColor: 'rgba(0,0,0,0.4)',
-      justifyContent: 'center',
       alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
       paddingHorizontal: spacing.sm,
     },
     heading: {
-      color: colors.text,
-      ...typography.h1,
+      color: 'white',
+      ...typography.h2,
+      maxWidth: 250,
       alignSelf: 'flex-start',
     },
     caption: {
-      color: colors.text,
+      color: 'white',
+      maxWidth: 300,
+      alignSelf: 'flex-start',
+      marginTop: theme.spacing.md,
       ...typography.caption,
     },
     image: {

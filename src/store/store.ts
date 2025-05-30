@@ -3,6 +3,7 @@ import devToolsEnhancer from 'redux-devtools-expo-dev-plugin'
 import { omdbApi } from './api'
 import favoritesReducer from './favoritesSice'
 import featuredReducer from './featuredSlice'
+import moviesReducer from './moviesSlice'
 import themeReducer from './themeSlice'
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     [omdbApi.reducerPath]: omdbApi.reducer,
     favorites: favoritesReducer,
     featured: featuredReducer,
+    movies: moviesReducer,
     theme: themeReducer,
   },
   middleware: (getDefault) => getDefault().concat(omdbApi.middleware),

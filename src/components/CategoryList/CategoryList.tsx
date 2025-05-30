@@ -37,7 +37,6 @@ export default function CategoryList({ title, query }: CategoryListProps) {
         }}
         onEndReached={loadMore}
       />
-      {isFetching && <ActivityIndicator style={styles.loader} />}
     </View>
   )
 }
