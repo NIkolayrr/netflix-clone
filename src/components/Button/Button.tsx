@@ -36,7 +36,7 @@ export default function Button({ title, onPress, variant = 'primary', icon, disa
       style={[styles.button, variantStyle, disabled && styles.disabled, style]}
       activeOpacity={0.7}
     >
-      {icon ? <Ionicons name={icon} size={16} style={[styles.icon, iconStyle]} /> : null}
+      {icon ? <Ionicons testID='btn-icon' name={icon} size={16} style={[styles.icon, iconStyle]} /> : null}
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>
   )
