@@ -3,7 +3,7 @@ import useStyles from '@/src/styles/details/styles'
 import { useTheme } from '@/src/theme/ThemeProvider'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
-import { ActivityIndicator, Image, ScrollView, Text, View } from 'react-native'
+import { ActivityIndicator, Image, Platform, ScrollView, Text, View } from 'react-native'
 import Animated, { FadeInUp } from 'react-native-reanimated'
 
 type Params = {
@@ -45,9 +45,11 @@ export default function Details() {
     ['Production', movie.Production],
   ]
 
+  const ViewAnimation = Platform.OS !== 'android' ? { entering: FadeInUp } : {}
+
   return (
     <ScrollView style={styles.container}>
-      <Animated.View key={movie.imdbID} entering={FadeInUp} style={styles.header}>
+      <Animated.View key={movie.imdbID} {...ViewAnimation} style={styles.header}>
         <Image source={{ uri: movie.Poster }} style={styles.poster} resizeMode='cover' />
         <View style={styles.headerInfo}>
           <Text style={styles.title}>{movie.Title}</Text>
