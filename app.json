@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "betty-task",
-    "slug": "betty-task",
+    "name": "netflix-task",
+    "slug": "netflix-task",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "bettytask",
+    "scheme": "netflixtask",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

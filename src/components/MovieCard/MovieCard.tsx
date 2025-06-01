@@ -24,10 +24,19 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
   }
 
   return (
-    <TouchableOpacity onPress={handlCardPress} style={styles.card}>
+    <TouchableOpacity testID={`movie-card-touchable-${movie.imdbID}`} onPress={handlCardPress} style={styles.card}>
       <View style={styles.poster}>
-        <ImageBackground source={{ uri: movie.Poster }} contentFit='cover' style={styles.imageBackground}>
-          <TouchableOpacity onPress={handleToggleFavourite} style={styles.favourites}>
+        <ImageBackground
+          testID={`image-background-${movie.imdbID}`}
+          source={{ uri: movie.Poster }}
+          contentFit='cover'
+          style={styles.imageBackground}
+        >
+          <TouchableOpacity
+            testID={`toggle-fav-button-${movie.imdbID}`}
+            onPress={handleToggleFavourite}
+            style={styles.favourites}
+          >
             <Ionicons name={isFav ? 'heart' : 'heart-outline'} style={styles.icon} />
           </TouchableOpacity>
         </ImageBackground>

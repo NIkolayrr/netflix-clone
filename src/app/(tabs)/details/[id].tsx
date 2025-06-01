@@ -33,6 +33,18 @@ export default function Details() {
     )
   }
 
+  const additionDetails = [
+    ['Director', movie.Director],
+    ['Writer', movie.Writer],
+    ['Actors', movie.Actors],
+    ['Released', movie.Released],
+    ['Country', movie.Country],
+    ['Awards', movie.Awards],
+    ['Rated', movie.Rated],
+    ['Box Office', movie.BoxOffice],
+    ['Production', movie.Production],
+  ]
+
   return (
     <ScrollView style={styles.container}>
       <Animated.View key={movie.imdbID} entering={FadeInUp} style={styles.header}>
@@ -54,36 +66,11 @@ export default function Details() {
         <Text style={styles.paragraph}>{movie.Plot}</Text>
       </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Details</Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Director:</Text> {movie.Director}
+      {additionDetails.map(([label, value]) => (
+        <Text key={label} style={styles.detail}>
+          <Text style={styles.bold}>{label}:</Text> {value}
         </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Writer:</Text> {movie.Writer}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Actors:</Text> {movie.Actors}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Released:</Text> {movie.Released}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Country:</Text> {movie.Country}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Awards:</Text> {movie.Awards}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Rated:</Text> {movie.Rated}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Box Office:</Text> {movie.BoxOffice}
-        </Text>
-        <Text style={styles.detail}>
-          <Text style={styles.bold}>Production:</Text> {movie.Production}
-        </Text>
-      </View>
+      ))}
     </ScrollView>
   )
 }

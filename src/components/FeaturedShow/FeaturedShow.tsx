@@ -17,7 +17,7 @@ export default function FeaturedShow() {
     skip: !featured,
   })
 
-  if (!featured) return null
+  if (!fullMovie) return null
 
   const handlePlay = () => {}
 

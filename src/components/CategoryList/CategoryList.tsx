@@ -14,7 +14,7 @@ export default function CategoryList({ title, query }: CategoryListProps) {
   if (isLoading && movies.length === 0) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator testID='loading-category' />
       </View>
     )
   }
