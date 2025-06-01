@@ -24,7 +24,6 @@ describe('Button', () => {
 
   it('renders icon if provided', async () => {
     const { findByTestId, debug } = customRender(<Button title='With Icon' icon='play' onPress={() => {}} />)
-    console.log(debug)
     const icon = await findByTestId('btn-icon')
     expect(icon).toBeTruthy()
   })
