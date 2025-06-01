@@ -1,0 +1,205 @@
+{
+  "metadata": {
+    "current": {
+      "branch": "main",
+      "commitHash": "d0626896965e93d6f949e5665247c6162000a6fe",
+      "creationDate": "2025-06-01T12:34:59.764Z"
+    },
+    "baseline": {
+      "branch": "main",
+      "commitHash": "d0626896965e93d6f949e5665247c6162000a6fe",
+      "creationDate": "2025-06-01T12:20:37.494Z"
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "significant": [],
+  "meaningless": [
+    {
+      "name": "MovieCard renders efficiently with many instances",
+      "type": "render",
+      "baseline": {
+        "name": "MovieCard renders efficiently with many instances",
+        "type": "render",
+        "runs": 10,
+        "meanDuration": 14.279111999999737,
+        "stdevDuration": 0.2781732605094658,
+        "durations": [
+          14.770876999999018,
+          14.084595000003674,
+          14.0827659999959,
+          14.554100999994489,
+          14.094776000001502,
+          14.136668000004647,
+          14.490808999995807,
+          14.496917000005624,
+          14.183893999997736,
+          13.895716999998967
+        ],
+        "warmupDurations": [
+          52.80961600000205
+        ],
+        "outlierDurations": [],
+        "meanCount": 1,
+        "stdevCount": 0,
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "issues": {
+          "initialUpdateCount": 0,
+          "redundantUpdates": []
+        }
+      },
+      "current": {
+        "name": "MovieCard renders efficiently with many instances",
+        "type": "render",
+        "runs": 10,
+        "meanDuration": 14.332661600001348,
+        "stdevDuration": 0.20923607486832438,
+        "durations": [
+          14.193120999996609,
+          14.531107000001839,
+          14.765065999997887,
+          14.151368000005277,
+          14.239486999996416,
+          14.208715000002485,
+          14.1162440000071,
+          14.301986000006082,
+          14.284035000004224,
+          14.535486999995555
+        ],
+        "warmupDurations": [
+          62.35582799999679
+        ],
+        "outlierDurations": [],
+        "meanCount": 1,
+        "stdevCount": 0,
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "issues": {
+          "initialUpdateCount": 0,
+          "redundantUpdates": []
+        }
+      },
+      "durationDiff": 0.05354960000161135,
+      "relativeDurationDiff": 0.00375020519494576,
+      "isDurationDiffSignificant": false,
+      "countDiff": 0,
+      "relativeCountDiff": 0
+    },
+    {
+      "name": "MovieList renders efficiently with many movies",
+      "type": "render",
+      "baseline": {
+        "name": "MovieList renders efficiently with many movies",
+        "type": "render",
+        "runs": 10,
+        "meanDuration": 3.5721532000007983,
+        "stdevDuration": 0.10335106897552392,
+        "durations": [
+          3.7154410000007374,
+          3.5464180000005854,
+          3.5096170000017537,
+          3.5575349999990067,
+          3.700293000003512,
+          3.603873000000476,
+          3.6767319999971733,
+          3.4594990000005055,
+          3.5512090000036096,
+          3.400915000000623
+        ],
+        "warmupDurations": [
+          37.204775999999356
+        ],
+        "outlierDurations": [],
+        "meanCount": 1,
+        "stdevCount": 0,
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "issues": {
+          "initialUpdateCount": 0,
+          "redundantUpdates": []
+        }
+      },
+      "current": {
+        "name": "MovieList renders efficiently with many movies",
+        "type": "render",
+        "runs": 10,
+        "meanDuration": 3.602104800003917,
+        "stdevDuration": 0.17380815014464332,
+        "durations": [
+          4.079218000002129,
+          3.5858820000057676,
+          3.4623320000127933,
+          3.617384000002403,
+          3.5787460000015017,
+          3.579721000000518,
+          3.5664840000094955,
+          3.5261729999992895,
+          3.51939300000231,
+          3.505715000002965
+        ],
+        "warmupDurations": [
+          46.55306400000086
+        ],
+        "outlierDurations": [],
+        "meanCount": 1,
+        "stdevCount": 0,
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "issues": {
+          "initialUpdateCount": 0,
+          "redundantUpdates": []
+        }
+      },
+      "durationDiff": 0.029951600003118806,
+      "relativeDurationDiff": 0.00838474676929089,
+      "isDurationDiffSignificant": false,
+      "countDiff": 0,
+      "relativeCountDiff": 0
+    }
+  ],
+  "countChanged": [],
+  "renderIssues": [],
+  "added": [],
+  "removed": []
+}

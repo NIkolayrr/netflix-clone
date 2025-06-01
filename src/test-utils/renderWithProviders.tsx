@@ -1,11 +1,11 @@
+import { configureStore, preloadedState } from '@reduxjs/toolkit'
+import { render, RenderOptions } from '@testing-library/react-native'
 import { FC, PropsWithChildren, ReactElement } from 'react'
 import { Provider } from 'react-redux'
-import { render, RenderOptions } from '@testing-library/react-native'
-import { configureStore, preloadedState } from '@reduxjs/toolkit'
 import devToolsEnhancer from 'redux-devtools-expo-dev-plugin'
 
+import { RootState } from '@/src/store/store'
 import { ThemeProvider } from '@/src/theme/ThemeProvider'
-import { RootState, store as defaultStore } from '@/src/store/store'
 
 import { omdbApi } from '@/src/store/api'
 import favoritesReducer from '@/src/store/favoritesSice'
@@ -67,7 +67,6 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'queries'> {
   store?: ReturnType<typeof configureStore>
 }
 
-const mockReducer = jest.fn((state) => state)
 export const createMockStore = (preloadedState?: preloadedState<RootState>) =>
   configureStore({
     reducer: {

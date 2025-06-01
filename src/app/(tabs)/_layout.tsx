@@ -1,6 +1,7 @@
 import { useTheme } from '@/src/theme/ThemeProvider'
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { Tabs, useNavigation } from 'expo-router'
+import { Tabs } from 'expo-router'
+import { goBack } from 'expo-router/build/global-state/routing'
 
 export default function TabLayout() {
   const { theme } = useTheme()
@@ -36,16 +37,7 @@ export default function TabLayout() {
           headerTitle: () => '',
           href: null,
           headerLeft: () => {
-            const navigation = useNavigation()
-            return (
-              <Ionicons
-                name='chevron-back'
-                size={24}
-                color={theme.colors.text}
-                style={{ paddingLeft: 16 }}
-                onPress={() => navigation.goBack()}
-              />
-            )
+            return <Ionicons name='chevron-back' size={24} color={theme.colors.text} onPress={() => goBack()} />
           },
         }}
       />
