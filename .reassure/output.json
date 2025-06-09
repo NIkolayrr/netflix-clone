@@ -2,8 +2,8 @@
   "metadata": {
     "current": {
       "branch": "main",
-      "commitHash": "d0626896965e93d6f949e5665247c6162000a6fe",
-      "creationDate": "2025-06-01T12:34:59.764Z"
+      "commitHash": "82bd35acbec2b4ae564b3558b893378499d90415",
+      "creationDate": "2025-06-09T11:05:53.017Z"
     },
     "baseline": {
       "branch": "main",
@@ -13,7 +13,99 @@
   },
   "errors": [],
   "warnings": [],
-  "significant": [],
+  "significant": [
+    {
+      "name": "MovieList renders efficiently with many movies",
+      "type": "render",
+      "baseline": {
+        "name": "MovieList renders efficiently with many movies",
+        "type": "render",
+        "runs": 10,
+        "meanDuration": 3.5721532000007983,
+        "stdevDuration": 0.10335106897552392,
+        "durations": [
+          3.7154410000007374,
+          3.5464180000005854,
+          3.5096170000017537,
+          3.5575349999990067,
+          3.700293000003512,
+          3.603873000000476,
+          3.6767319999971733,
+          3.4594990000005055,
+          3.5512090000036096,
+          3.400915000000623
+        ],
+        "warmupDurations": [
+          37.204775999999356
+        ],
+        "outlierDurations": [],
+        "meanCount": 1,
+        "stdevCount": 0,
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "issues": {
+          "initialUpdateCount": 0,
+          "redundantUpdates": []
+        }
+      },
+      "current": {
+        "name": "MovieList renders efficiently with many movies",
+        "type": "render",
+        "runs": 10,
+        "meanDuration": 3.890314600000238,
+        "stdevDuration": 0.19350556537226535,
+        "durations": [
+          4.048666999997295,
+          3.780423999998675,
+          3.815258000015092,
+          4.077877000006993,
+          3.86582799997268,
+          3.818713000009666,
+          4.29143900001327,
+          3.743670000008933,
+          3.830405000004248,
+          3.630864999975529
+        ],
+        "warmupDurations": [
+          968.4154710000157
+        ],
+        "outlierDurations": [],
+        "meanCount": 1,
+        "stdevCount": 0,
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "issues": {
+          "initialUpdateCount": 0,
+          "redundantUpdates": []
+        }
+      },
+      "durationDiff": 0.3181613999994397,
+      "relativeDurationDiff": 0.08906712063731438,
+      "isDurationDiffSignificant": true,
+      "countDiff": 0,
+      "relativeCountDiff": 0
+    }
+  ],
   "meaningless": [
     {
       "name": "MovieCard renders efficiently with many instances",
@@ -63,22 +155,22 @@
         "name": "MovieCard renders efficiently with many instances",
         "type": "render",
         "runs": 10,
-        "meanDuration": 14.332661600001348,
-        "stdevDuration": 0.20923607486832438,
+        "meanDuration": 14.940437500006102,
+        "stdevDuration": 0.18599000953734246,
         "durations": [
-          14.193120999996609,
-          14.531107000001839,
-          14.765065999997887,
-          14.151368000005277,
-          14.239486999996416,
-          14.208715000002485,
-          14.1162440000071,
-          14.301986000006082,
-          14.284035000004224,
-          14.535486999995555
+          14.926892000005864,
+          15.252363999985391,
+          14.690460000007079,
+          14.993624000027012,
+          15.037955000007969,
+          14.829440999988037,
+          14.804421999990154,
+          14.920792000069923,
+          14.744502000015927,
+          15.203922999963652
         ],
         "warmupDurations": [
-          62.35582799999679
+          1143.2755529999586
         ],
         "outlierDurations": [],
         "meanCount": 1,
@@ -100,99 +192,8 @@
           "redundantUpdates": []
         }
       },
-      "durationDiff": 0.05354960000161135,
-      "relativeDurationDiff": 0.00375020519494576,
-      "isDurationDiffSignificant": false,
-      "countDiff": 0,
-      "relativeCountDiff": 0
-    },
-    {
-      "name": "MovieList renders efficiently with many movies",
-      "type": "render",
-      "baseline": {
-        "name": "MovieList renders efficiently with many movies",
-        "type": "render",
-        "runs": 10,
-        "meanDuration": 3.5721532000007983,
-        "stdevDuration": 0.10335106897552392,
-        "durations": [
-          3.7154410000007374,
-          3.5464180000005854,
-          3.5096170000017537,
-          3.5575349999990067,
-          3.700293000003512,
-          3.603873000000476,
-          3.6767319999971733,
-          3.4594990000005055,
-          3.5512090000036096,
-          3.400915000000623
-        ],
-        "warmupDurations": [
-          37.204775999999356
-        ],
-        "outlierDurations": [],
-        "meanCount": 1,
-        "stdevCount": 0,
-        "counts": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ],
-        "issues": {
-          "initialUpdateCount": 0,
-          "redundantUpdates": []
-        }
-      },
-      "current": {
-        "name": "MovieList renders efficiently with many movies",
-        "type": "render",
-        "runs": 10,
-        "meanDuration": 3.602104800003917,
-        "stdevDuration": 0.17380815014464332,
-        "durations": [
-          4.079218000002129,
-          3.5858820000057676,
-          3.4623320000127933,
-          3.617384000002403,
-          3.5787460000015017,
-          3.579721000000518,
-          3.5664840000094955,
-          3.5261729999992895,
-          3.51939300000231,
-          3.505715000002965
-        ],
-        "warmupDurations": [
-          46.55306400000086
-        ],
-        "outlierDurations": [],
-        "meanCount": 1,
-        "stdevCount": 0,
-        "counts": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ],
-        "issues": {
-          "initialUpdateCount": 0,
-          "redundantUpdates": []
-        }
-      },
-      "durationDiff": 0.029951600003118806,
-      "relativeDurationDiff": 0.00838474676929089,
+      "durationDiff": 0.6613255000063649,
+      "relativeDurationDiff": 0.046314189566296356,
       "isDurationDiffSignificant": false,
       "countDiff": 0,
       "relativeCountDiff": 0

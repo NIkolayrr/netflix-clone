@@ -1,11 +1,11 @@
 import { toggleFavorite } from '@/src/store/favoritesSice'
+import { selectIsFavorite } from '@/src/store/selectors'
 import { useTheme } from '@/src/theme/ThemeProvider'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { ImageBackground } from 'expo-image'
-import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../store/store'
 import { useStyles } from './styles'
 import { MovieCardProps } from './types'
 
@@ -13,7 +13,8 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
   const dispatch = useDispatch()
   const { theme } = useTheme()
   const styles = useStyles(theme)
-  const isFav = Boolean(useSelector((state: RootState) => state.favorites.items[movie.imdbID]))
+  const isFav = useSelector(selectIsFavorite(movie.imdbID))
+  const [imageHasError, setImageHasError] = useState(false)
 
   const handlCardPress = () => {
     onPress(movie)
@@ -21,6 +22,10 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
 
   const handleToggleFavourite = () => {
     dispatch(toggleFavorite(movie))
+  }
+
+  const handleFaultyImage = () => {
+    setImageHasError(true)
   }
 
   return (
@@ -31,6 +36,7 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
           source={{ uri: movie.Poster }}
           contentFit='cover'
           style={styles.imageBackground}
+          onError={handleFaultyImage}
         >
           <TouchableOpacity
             testID={`toggle-fav-button-${movie.imdbID}`}
@@ -39,6 +45,7 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
           >
             <Ionicons name={isFav ? 'heart' : 'heart-outline'} style={styles.icon} />
           </TouchableOpacity>
+          {imageHasError ? <Text style={styles.title}>{movie.Title}</Text> : null}
         </ImageBackground>
       </View>
     </TouchableOpacity>

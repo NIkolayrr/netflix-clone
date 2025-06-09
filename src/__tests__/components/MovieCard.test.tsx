@@ -1,7 +1,7 @@
-import { fireEvent } from '@testing-library/react-native'
 import MovieCard from '@/src/components/MovieCard/MovieCard'
-import { customRender } from '@/src/test-utils/renderWithProviders'
 import { toggleFavorite } from '@/src/store/favoritesSice'
+import { customRender } from '@/src/test-utils/renderWithProviders'
+import { fireEvent } from '@testing-library/react-native'
 import * as reactRedux from 'react-redux'
 
 describe('MovieCard', () => {

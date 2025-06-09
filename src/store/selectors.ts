@@ -8,3 +8,9 @@ export const selectMoviesByIds = (ids: string[]) =>
   )
 
 export const selectFavoriteMovies = (state: RootState) => state.favorites.items
+
+export const selectIsFavorite = (id: string) =>
+  createSelector(
+    (state: RootState) => state.favorites.items,
+    (items) => Boolean(items[id])
+  )

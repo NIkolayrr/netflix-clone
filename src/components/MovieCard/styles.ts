@@ -4,11 +4,15 @@ import type { Theme } from '../../theme'
 export const useStyles = (theme: Theme) =>
   StyleSheet.create({
     card: {
-      marginHorizontal: theme.spacing.xs,
-    },
-    poster: {
+      boxSizing: 'border-box',
       width: 120,
       height: 180,
+      marginRight: theme.spacing.xs,
+      borderWidth: 4,
+      borderColor: `${theme.colors.text}33`,
+    },
+    poster: {
+      flex: 1,
     },
     favourites: {
       position: 'absolute',
